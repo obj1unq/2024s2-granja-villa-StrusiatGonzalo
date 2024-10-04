@@ -15,17 +15,28 @@ object hector {
 	}
 
 	method sembrarMaiz() {
-		game.addVisual(new Maiz (position = self.position()))
-		granja.semillasSembradas.add(new Maiz (position = self.position()))
+		const maiz = new Maiz (position = self.position())
+		granja.sembrar(maiz)
+		game.addVisual(maiz)
+
 	}
 
 	method sembrarTrigo() {
-		game.addVisual(new Trigo (position = self.position()))
-		granja.semillasSembradas.add(new Trigo (position = self.position()))
+		const trigo = new Trigo (position = self.position())
+		granja.sembrar(trigo)
+		game.addVisual(trigo)
 	}
 
 	method sembrarTomaco() {
-		game.addVisual(new Tomaco (position = self.position()))
-		granja.semillasSembradas.add(new Tomaco (position = self.position()))
+		const tomaco = new Tomaco (position = self.position())
+		granja.sembrar(tomaco)
+		game.addVisual(tomaco)
+
+	}
+
+	method regar() {
+	   granja.regarSemillasSiHay(self.position())//self.position me da la direccion actual
+	   
+
 	}
 }

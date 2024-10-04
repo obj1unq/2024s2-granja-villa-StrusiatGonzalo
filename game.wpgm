@@ -12,15 +12,14 @@ program farmville {
 
 	//  VISUALES
  	game.addVisual(hector)// addVisualCharacter agrega un personaje y ya te deja moverlo con las flecas
- 	game.addVisual(new Maiz()) // Se agrega a modo de prueba
-	game.addVisual(new Trigo())// se agrega a modo de prueba
-	game.addVisual(new Tomaco())// addVisual es para agregar la imagen en la interfaz
- 	
+ 		
 	// conf de teclas de siembra
 	keyboard.m().onPressDo({hector.sembrarMaiz()})
 	keyboard.t().onPressDo({hector.sembrarTrigo()})
 	keyboard.o().onPressDo({hector.sembrarTomaco()})
 
+	// tecla de riego
+	keyboard.r().onPressDo({hector.regar()})
 
 
 	// conf de teclas de movimiento 
