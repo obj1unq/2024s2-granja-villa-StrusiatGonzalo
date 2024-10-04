@@ -21,6 +21,14 @@ program farmville {
 	// tecla de riego
 	keyboard.r().onPressDo({hector.regar()})
 
+	// tecla de cosechar
+	keyboard.c().onPressDo({hector.cosechar()})
+
+	// tecla de vender 
+	keyboard.v().onPressDo({hector.vender()})
+
+	// tecla para saber cuanto dinero tiene hector
+	keyboard.space().onPressDo({hector.dineroDisponible()})
 
 	// conf de teclas de movimiento 
 	keyboard.up().onPressDo({hector.mover(arriba)})

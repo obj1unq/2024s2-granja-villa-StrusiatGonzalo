@@ -49,6 +49,11 @@ object granja {
    method plantaEnLaDireccion(position) {
 	 return semillasSembradas.find({semilla => semilla.position() == position})
    }
+
+   method cosecharPlanta(position) {
+	 game.removeVisual(self.plantaEnLaDireccion(position))// removeVisual va sin llaves solo paso el objeto
+	 semillasSembradas.remove(self.plantaEnLaDireccion(position))
+   }
 }   
 
 

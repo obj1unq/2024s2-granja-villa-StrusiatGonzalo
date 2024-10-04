@@ -5,6 +5,8 @@ import cultivos.*
 object hector {
 	var property position = game.center()
 	const property image = "player.png" 
+	var property cosecha = #{} 
+	var property oroDeHector = 0
 
 	method mover(direccion) {
 	  const nuevaPosicion = direccion.siguiente(position)
@@ -36,7 +38,27 @@ object hector {
 
 	method regar() {
 	   granja.regarSemillasSiHay(self.position())//self.position me da la direccion actual
-	   
 
+	}
+
+	method cosechar() {
+	  self.validarSiHayPlantaParaCosechar()
+	  cosecha.add(granja.plantaEnLaDireccion(self.position()))
+	  granja.cosecharPlanta(self.position())
+	}
+
+	method validarSiHayPlantaParaCosechar() {
+	  if (not(granja.haySemilla(self.position()) and granja.plantaEnLaDireccion(self.position()).esAdulto()) ){
+		self.error("No tengo nada para cosechar")
+	  }
+	}
+
+	method vender() {
+	  oroDeHector += cosecha.sum({planta => planta.precio()})
+	  cosecha.clear()
+	}
+
+	method dineroDisponible() {
+	  game.say(self, "Mi dinero disponible " + oroDeHector)
 	}
 }
