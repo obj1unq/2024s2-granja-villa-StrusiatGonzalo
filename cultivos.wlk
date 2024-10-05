@@ -43,10 +43,10 @@ class Trigo {
 
 	  if (estado == 0){
 		estado = 1
-		esAdulto = true
 	  }
 	  else if (estado == 1){
 		estado = 2
+		esAdulto = true
 	  }
 	  else if (estado == 2){
 		estado = 3

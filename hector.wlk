@@ -59,6 +59,6 @@ object hector {
 	}
 
 	method dineroDisponible() {
-	  game.say(self, "Mi dinero disponible " + oroDeHector)
+	  game.say(self, "Mi dinero disponible " + oroDeHector + " y tengo " + cosecha.size() + " plantas para vender" )
 	}
 }

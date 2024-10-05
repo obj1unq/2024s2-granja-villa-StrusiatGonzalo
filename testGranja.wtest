@@ -1,9 +1,62 @@
-import example.pepita
+import cultivos.*
+import granja.*
+import hector.*
+import wollok.game.*
 
-describe "group of tests for pepita" {
+describe "Testeo de la granja, hector y los cultivos " {
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+  test "primero hector siembra un maiz para luego intentar sembrar en el mismo lugar y asi 
+        me salga el error " {
+
+       hector.sembrarMaiz()
+    
+       assert.throwsExceptionWithMessage("Ya hay una planta aca",{hector.sembrarMaiz()})
   }
 
+  test "primero hector siembra un tomaco y luego lo cosecha para asi despues evaluar el error
+       al querer cosechar donde no hay nada."{
+
+       hector.sembrarTomaco()
+       hector.cosechar()
+    
+
+       assert.throwsExceptionWithMessage("No tengo nada para cosechar",{hector.cosechar()})
+  }
+
+  test "hector siembra Maiz y despues lo riega para poder cosecharlo y por ultimo lo vende
+        para asi poder evaluar si la cosecha de hector queda vacia a la hora de vender y 
+        en el proceso veo si puede sembrar, regar y cosechar"{
+
+        hector.sembrarMaiz()
+        hector.regar()
+        hector.cosechar()
+        hector.vender()// si vendo mi cosecha entonces no tengo que tener nada
+
+        assert.equals(#{}, hector.cosecha())
+  }
+  test "primero le asigno la posicion a hector para que despues siembre un maiz y ver si hay una 
+        semilla en la celda que le pase por hector"{
+    
+        hector.position(game.at(0,0))
+        hector.sembrarMaiz()
+
+        assert.that(granja.haySemilla(game.at(0,0)))
+  }
+
+  test "hector planta Trigo "{
+    
+       hector.position(game.at(0,0))
+       hector.sembrarTrigo()
+
+      assert.that(granja.haySemilla(game.at(0,0)))
+  }
+
+  test "hector planta Tomaco "{
+    
+       hector.position(game.at(0,0))
+       hector.sembrarTomaco()
+
+       assert.that(granja.haySemilla(game.at(0,0)))
+  }
 }
+
