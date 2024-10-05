@@ -3,10 +3,11 @@ import hector.*
 import granja.*
 
 class Maiz { // las clases siempre arrancan con mayusculas 
-	var property position = null
+	var property position =  null
 	var property image = self.esBebe()
 	var property esAdulto = false
 	
+
 
 
 	method regar() {
